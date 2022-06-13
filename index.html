@@ -14,43 +14,18 @@
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
   <script type="text/babel">
     const root = document.getElementById('root');
-    const Title = () => (
-      <h3 id="title" onMouseEnter={() => console.log('mouse enter')}>
-        Hello I'm a title
-      </h3>
-    );
-    // const h3 = React.createElement(
-    //   'h3',
-    //   {
-    //     onMouseEnter: () => console.log('mouse enter'),
-    //   },
-    //   "Hello I'm a span"
-    // );
-    const Button = () => (
-      <button
-        style={{
-          backgroundColor: 'green',
-        }}
-        onClick={() => console.log('im clicked')}
-      >
-        Click me
-      </button>
-    );
-    // const btn = React.createElement(
-    //   'button',
-    //   {
-    //     onClick: () => console.log('im clicked'),
-    //     style: {
-    //       backgroundColor: 'green',
-    //     },
-    //   },
-    //   'Click me'
-    // );
-    const Container = () => (
-      <div>
-        <Title /> <Button />
-      </div>
-    );
-    ReactDOM.render(<Container />, root);
+    function App() {
+      let [counter, setCounter] = React.useState(0);
+      const onClick = () => {
+        setCounter(counter + 1);
+      };
+      return (
+        <div>
+          <h3>Total clicks: {counter}</h3>
+          <button onClick={onClick}>Click me</button>
+        </div>
+      );
+    }
+    ReactDOM.render(<App />, root);
   </script>
 </html>
