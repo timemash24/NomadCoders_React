@@ -14,6 +14,7 @@
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
   <script type="text/babel">
     function Btn({ text, changeValue }) {
+      console.log(text, 'was renderd');
       return (
         <button
           onClick={changeValue}
@@ -29,14 +30,14 @@
         </button>
       );
     }
-
+    const MemorizedBtn = React.memo(Btn); // 변경한 prop 가졌을 경우만 render
     function App() {
       const [value, setValue] = React.useState('Save Changes');
       const changeValue = () => setValue('Revert Changes');
       return (
         <div>
-          <Btn text={value} changeValue={changeValue} />
-          <Btn text="Continue" />
+          <MemorizedBtn text={value} changeValue={changeValue} />
+          <MemorizedBtn text="Continue" />
         </div>
       );
     }
